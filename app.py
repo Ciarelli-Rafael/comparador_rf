@@ -326,7 +326,7 @@ if executar:
     data_break,ganho_financeiro,financeiro_break = puxa_data(df_ativo,df_ativo_troca)
     ganho_financeiro = int(ganho_financeiro)
 
-    df_ativo.to_excel("ativo1.xlsx")
+    #df_ativo.to_excel("ativo1.xlsx")
     #df_ativo_troca.to_excel("ativotroca.xlsx")
     
     try:
