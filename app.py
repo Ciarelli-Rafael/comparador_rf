@@ -475,6 +475,38 @@ if executar:
         st.info("ℹ️ O gráfico apresenta a comparação de rentabilidade líquida de imposto de renda dos ativos.")
 
 
+
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+        st.write("\n")  # Espaço simples
+
+
+
+
         st.markdown("""
         **Disclaimers:**
 
