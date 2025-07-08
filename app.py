@@ -13,7 +13,6 @@ from pandas.tseries.offsets import CustomBusinessDay
 import pandas_market_calendars as mcal
 
 import psycopg2
-
 import locale
 
 
@@ -301,6 +300,7 @@ st.markdown(
             padding: 5px 10px;
             font-weight: bold;
         }}
+          
     </style>
     """,
     unsafe_allow_html=True,
@@ -309,7 +309,7 @@ st.markdown(
 #pagina principal
 
     # Título do aplicativo
-st.title("Comparador de Ativos de Renda Fixa")
+st.title("Oportunidade de Alongamento")
 st.markdown("<br>", unsafe_allow_html=True)
 
     # Subtítulo
@@ -346,18 +346,28 @@ if executar:
             
         col1, col2, col3, col4 = st.columns(4)
 
+        #col1, col2 = st.columns(2)
+        #col3, col4 = st.columns(2)
+
+
+
         card_style = """
             background-color: white;
-            padding: 15px;
+            padding: 10px;
             border-radius: 10px;
             border: 1px solid #ddd;
             box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            font-size: 14px;
+            width: 90%;
+            margin: auto;
         """
 
-        with col1:
+
+        with col1:   #caso queria deixar normal, sem ser centralizado, é so tirar o text-align
             st.markdown(f"""
-                <div style="{card_style}">
-                    <h4>Ativo de Origem</h4>
+                <div style="{card_style}"> 
+                    <h4>Posição Atual</h4>
                     <h5>{ativo1} - {data_venc1}</h5>
                 </div>
             """, unsafe_allow_html=True)
@@ -407,8 +417,6 @@ if executar:
           # 👈 força azul/verde
         )
 
-        #fig.add_vline(x=data_break, line_dash="dash", line_color="gray")
-        #fig.add_annotation(x=data_break, y=valor_em_y, text="Break Even", showarrow=True)
 
 
         # 3️⃣  Deixe as linhas mais grossas (ex.: 3 px)
@@ -453,7 +461,8 @@ if executar:
                 y=[row["Financeiro"]],
                 mode="markers+text",
                 marker=dict(size=8, color=color_map.get(row["ativo"], "#000")),
-                text=[valor_fmt],
+                #text=[valor_fmt],
+                text=[f"<b>{valor_fmt}</b>"],
                 textposition="middle right",
                 showlegend=False
             )
@@ -463,9 +472,28 @@ if executar:
 
         # 5️⃣  Exibe no Streamlit
         st.plotly_chart(fig)
-        
-        st.subheader("Projeção Anbima")
-        st.dataframe(df_t)
+        st.info("ℹ️ O gráfico apresenta a comparação de rentabilidade líquida de imposto de renda dos ativos.")
+
+
+        st.markdown("""
+        **Disclaimers:**
+
+        1) Os fundos de investimento referidos neste e-mail podem utilizar estratégias com derivativos como parte integrante de suas políticas de investimento.  
+        2) Não há garantia de que os fundos de investimento referidos neste e-mail terão o tratamento tributário de fundos de longo prazo.  
+        3) Os fundos de investimento referidos neste e-mail podem estar expostos a diferentes tipos de risco, tais como: crédito, mercado, liquidez operacional, etc.  
+        4) **RECOMENDAMOS SEMPRE A LEITURA INTEGRAL DO REGULAMENTO DOS FUNDOS DE INVESTIMENTO, BEM COMO DE TODO E QUALQUER DOCUMENTOS CONTENDO INFORMAÇÕES RELEVANTES E ESSENCIAIS SOBRE OS REFERIDOS FUNDOS, ANTES DE REALIZAR QUALQUER INVESTIMENTO.**  
+        5) Para avaliação da performance de um fundo de investimento, é recomendável a análise de, no mínimo, um período composto de 12 (doze) meses.  
+        6) **RENTABILIDADE PASSADA NÃO REPRESENTA GARANTIA DE RENTABILIDADE FUTURA. FUNDOS DE INVESTIMENTO NÃO CONTAM COM GARANTIA DO ADMINISTRADOR, DO GESTOR, DE QUALQUER MECANISMO DE SEGURO OU FUNDO GARANTIDOR DE CRÉDITO – FGC.** Assim, não é possível prever o desempenho futuro de um investimento a partir da variação de seu valor de mercado no passado.  
+        7) As informações contidas neste e-mail não podem ser consideradas como única fonte de informações no processo decisório do cliente, que, antes de tomar qualquer decisão, deverá realizar uma avaliação minuciosa do produto e respectivos riscos, face aos seus objetivos pessoais e ao seu perfil de risco.  
+        8) Este relatório foi preparado com o objetivo de simples conferência, as informações e saldos estão sujeitos à confirmação. Este material não tem caráter técnico ou publicitário, apenas informativo. Da mesma forma, embora as informações tenham sido obtidas de fontes confiáveis e fidedignas, nenhuma garantia ou responsabilidade, expressa ou implícita, é feita a respeito da exatidão, fidelidade e/ou totalidade das informações.  
+        9) Este relatório contém um breve resumo de cunho meramente informativo, não configurando análise de valores mobiliários nos termos da Instrução CVM Nº 598, de 03 de maio de 2018, e não tendo como objetivo a consultoria, oferta, solicitação de oferta, ou recomendação para a compra ou venda de qualquer investimento ou produto específico.  
+        10) O presente relatório foi elaborado pela Guelt AAI, com base nas informações transmitidas pelo Administrador e pelo cliente, e não tem por objetivo substituir o extrato contendo informações sobre as operações realizadas ou posições em aberto do cliente.  
+        11) Os sócios/atendentes da Guelt AAI estão identificados no site www.gueltinvestimentos.com.br
+        """)
+
+
+        #st.subheader("Projeção Anbima")
+        #st.dataframe(df_t)
     
    
     
@@ -475,3 +503,5 @@ if executar:
 
 else:
     st.info("Preencha os dados no menu lateral e clique em **Gerar Gráfico**.")
+    st.subheader("Projeção Anbima")
+    st.dataframe(df_t)
