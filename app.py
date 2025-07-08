@@ -356,7 +356,6 @@ if executar:
             padding: 10px;
             border-radius: 10px;
             border: 1px solid #ddd;
-            box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
             text-align: center;
             font-size: 14px;
             width: 90%;
