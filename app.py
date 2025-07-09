@@ -282,7 +282,7 @@ taxa2 = st.sidebar.number_input("Taxa (%) Ativo 2", value=84.0, step=0.1)
 ir_2= st.sidebar.number_input("IR Ativo 2", value=0.0, step=0.1,help="Ir se carregado até o vencimento, se for isento deixar 0")
 
 
-#perda_inicial = 
+perda_inicial = int(financeiro2 - financeiro1)
 
 executar = st.sidebar.button("📈 Gerar Gráfico")
 
@@ -344,7 +344,7 @@ if executar:
 
             
             
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3, col4, col5 = st.columns(5)
 
         #col1, col2 = st.columns(2)
         #col3, col4 = st.columns(2)
@@ -378,8 +378,17 @@ if executar:
                     <h5>{ativo2} - {data_venc2}</h5>
                 </div>
             """, unsafe_allow_html=True)
-
+        
         with col3:
+            st.markdown(f"""
+                <div style="{card_style}">
+                    <h4>Perda/Ganho Inicial</h4>
+                    <h5>R$ {perda_inicial}</h5>
+                </div>
+            """, unsafe_allow_html=True)
+       
+        
+        with col4:
             st.markdown(f"""
                 <div style="{card_style}">
                     <h4>Data Break Even</h4>
@@ -387,13 +396,13 @@ if executar:
                 </div>
             """, unsafe_allow_html=True)
 
-        with col4:
+        with col5:
             st.markdown(f"""
                 <div style="{card_style}">
                     <h4>Ganho Financeiro</h4>
                     <h5>R$ {ganho_financeiro}</h5>
                 </div>
-            """, unsafe_allow_html=True)        
+            """, unsafe_allow_html=True)   
 
 
         # 1️⃣  Mapeie cada ativo para a cor desejada
