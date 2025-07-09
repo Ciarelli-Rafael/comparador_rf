@@ -259,6 +259,7 @@ st.sidebar.markdown("<hr style='border:1px solid #ddd; margin:10px 0;'>", unsafe
 
 
 st.sidebar.title("Parâmetros dos Ativos")
+cliente = st.sidebar.text_input("Nome do cliente", "James Hooks")
 
 st.sidebar.markdown("### Ativo Atual")
 ativo1 = st.sidebar.text_input("Nome do Ativo 1", "NTNB IPCA + 7")
@@ -318,6 +319,8 @@ curva, df_t = leitura_curva()
 
 if executar:
 
+    st.subheader(cliente)
+    st.markdown("<br>", unsafe_allow_html=True)
 
     df_ativo = gera_graf(ativo1, financeiro1, vencimento1, indexador1, taxa1, curva, ir_1)
     df_ativo_troca= gera_graf(ativo2, financeiro2, vencimento2, indexador2, taxa2, curva, ir_2)
